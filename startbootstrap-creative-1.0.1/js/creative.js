@@ -40,13 +40,23 @@ $(document).ready(function() {
         $.getJSON(url, function(tracks) {
             track_id = tracks[0]['id'];
             console.log(track_id);
+            widget1.bind(SC.Widget.Events.READY, function() {
+                // show the SC widget when it's ready
+                $('#main_search').hide();
+                $('#sc-widget').show();
+            });
+            widget1.bind(SC.Widget.Events.FINISH, function() {
+                $('#sc-widget').hide();
+                document.getElementById('main_search').value = "";
+                $('#main_search').prop('disabled', false);
+                $('#main_search').show();
+            })
             widget1.load(widget_base_url + track_id + widget_url_extension, {auto_play:true});
             dfrd1.resolve();
         });
-        $.when(dfrd1).done(function(){
-            $('#main_search').hide();
-            $('#sc-widget').show();
-        });
+        //$.when(dfrd1).done(function(){
+        //    $('#main_search').hide();
+        //});
     })
 
     // Highlight the top nav as scrolling occurs

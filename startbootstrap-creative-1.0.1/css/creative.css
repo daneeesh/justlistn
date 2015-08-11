@@ -256,12 +256,12 @@ header .header-content .header-content-inner p {
 }
 
 iframe {
-    height: 250px;
+    height: 150px;
 }
 
-@media(max-width: 768px) {
+@media(min-width: 768px) {
     iframe {
-        height: 150px;
+        height: 320px;
     }
 }
 
