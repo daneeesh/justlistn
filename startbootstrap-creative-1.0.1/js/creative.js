@@ -37,6 +37,12 @@ $(document).ready(function() {
         event.preventDefault();
     });
 
+    $('#main_search').keyup(function(event){
+        if(event.keyCode == 13){
+            $('#listn-btn').click();
+        }
+    });
+
     $('#listn-btn').on('click', function(event) {
         $('#main_search').prop('disabled', true);
         var query = document.getElementById('main_search').value;
